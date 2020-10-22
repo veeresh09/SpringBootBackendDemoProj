@@ -56,10 +56,12 @@ public class UserController {
     @GetMapping("/categories")
     public ResponseEntity<Map<String,Object>> getAllUsers(HttpServletRequest request){
         int userId = (Integer) request.getAttribute("userId");
+        //String email = (String) request.getAttribute("email");
         List<Map<String, Object>> users= userAccessService.findAllUsers();
         Map<String,Object> map = new HashMap<>();
         map.put("message","Fetch successful");
         map.put("UserList",users);
+       // map.put("email",userId);
         return new ResponseEntity<>(map,HttpStatus.OK);
     }
     @DeleteMapping("/categories/{userId}")
